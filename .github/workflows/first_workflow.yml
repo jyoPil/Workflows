@@ -1,7 +1,7 @@
 name: Weekly Team Sync
 on:
   schedule:
-    - cron: 0 9 * * MON 
+    - cron: 0 * * * * 
 
 jobs:
   create_issue:
@@ -23,9 +23,9 @@ jobs:
             fi
           fi
           new_issue_url=$(gh issue create \
-            --title "$My First Issue" \
+            --title "$ My First Issue" \
             --assignee "$jyoPil" \
-            --label "$New" \
+            --label "$Needs Triage" \
             --body "$BODY")
           if [[ $PINNED == true ]]; then
             gh issue pin "$new_issue_url"
@@ -48,5 +48,5 @@ jobs:
             Add things to discuss below
 
             - [Work this week](https://github.com/orgs/github/projects/3)
-          PINNED: true
+          PINNED: false
           CLOSE_PREVIOUS: true
